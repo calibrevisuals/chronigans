@@ -14,11 +14,12 @@ jobs:
         with:
           node-version: 20
       - run: node .github/scripts/videos.mjs
+      - run: node .github/scripts/titles.mjs
       - name: Commit if changed
         run: |
-          git add videos.json
+          git add videos.json sources index.html
           if git diff --cached --quiet; then echo "no change"; exit 0; fi
           git config user.name "chronigans-bot"
           git config user.email "contact@chronigans.com"
-          git commit -m "Update video list"
+          git commit -m "Update video list and titles"
           git push
