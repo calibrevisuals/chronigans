@@ -53,6 +53,13 @@ li a:hover { color: var(--accent-2); }
 li small { display: block; color: var(--muted); font-size: .85rem; }
 li p { margin: 0; }
 .note { margin-top: 28px; padding: 14px 16px; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 10px; color: var(--muted); }
+.more { margin-top: 44px; }
+.more .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.more a { text-decoration: none; display: block; }
+.more img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; border: 1px solid var(--rule); display: block; }
+.more span { display: block; margin-top: 8px; font: 700 .95rem/1.35 var(--f-body); color: var(--paper); }
+.more a:hover span { color: var(--accent-2); }
+@media (max-width: 600px) { .more .grid { grid-template-columns: 1fr; } }
 footer { margin-top: 48px; padding-block: 24px 40px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
 footer a { color: var(--paper); }
 </style>
@@ -67,6 +74,14 @@ footer a { color: var(--paper); }
 <ul><li class="nt"><p><a href="https://en.wikisource.org/wiki/Catholic_Encyclopedia_(1913)/Pope_Formosus">Catholic Encyclopedia (1913), J. P. Kirsch, &quot;Pope Formosus&quot;</a><small>en.wikisource.org</small></p></li><li class="nt"><p><a href="https://en.wikipedia.org/wiki/Pope_Formosus">Wikipedia, &quot;Pope Formosus&quot;</a><small>en.wikipedia.org</small></p></li><li class="nt"><p><a href="https://www.newadvent.org/cathen/14289d.htm">Catholic Encyclopedia, H. K. Mann, &quot;Pope Stephen (VI) VII&quot;</a><small>newadvent.org</small></p></li><li class="nt"><p><a href="https://en.wikipedia.org/wiki/Pope_Stephen_VI">Wikipedia, &quot;Pope Stephen VI&quot;</a><small>en.wikipedia.org</small></p></li><li class="nt"><p><a href="https://www.britannica.com/event/Cadaver-Synod">Britannica, &quot;Cadaver Synod&quot;</a><small>britannica.com</small></p></li><li class="nt"><p><a href="https://en.wikipedia.org/wiki/Cadaver_Synod">Wikipedia, &quot;Cadaver Synod&quot; (Liutprand; Duhr 1932; Arnaldi 1951)</a><small>en.wikipedia.org</small></p></li><li class="nt"><p><a href="https://daily.jstor.org/the-cadaver-synod-putting-a-dead-pope-on-trial/">JSTOR Daily, &quot;The Cadaver Synod: Putting a Dead Pope on Trial&quot;</a><small>daily.jstor.org</small></p></li><li class="nt"><p><a href="https://en.wikipedia.org/wiki/Pope_Romanus">Wikipedia, &quot;Pope Romanus&quot;</a><small>en.wikipedia.org</small></p></li><li class="nt"><p><a href="https://en.wikipedia.org/wiki/Pope_Theodore_II">Wikipedia, &quot;Pope Theodore II&quot;</a><small>en.wikipedia.org</small></p></li><li class="nt"><p><a href="https://en.wikipedia.org/wiki/Pope_John_IX">Wikipedia, &quot;Pope John IX&quot;</a><small>en.wikipedia.org</small></p></li><li class="nt"><p><a href="https://en.wikipedia.org/wiki/Pope_Sergius_III">Wikipedia, &quot;Pope Sergius III&quot;</a><small>en.wikipedia.org</small></p></li><li class="nt"><p><a href="https://www.britannica.com/biography/Sergius-III">Britannica, &quot;Sergius III&quot;</a><small>britannica.com</small></p></li><li class="nt"><p><a href="https://en.wikipedia.org/wiki/Pope_Leo_V">Wikipedia, &quot;Pope Leo V&quot;</a><small>en.wikipedia.org</small></p></li><li class="nt"><p><a href="https://en.wikipedia.org/wiki/Saeculum_obscurum">Wikipedia, &quot;Saeculum obscurum&quot; (the Theophylacts and the &quot;dark age&quot;)</a><small>en.wikipedia.org</small></p></li><li class="nt"><p><a href="https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/paul-ii">Encyclopedia.com, &quot;Paul II&quot; (the Formosus II story)</a><small>encyclopedia.com</small></p></li></ul>
 
 <p class="note">Some retellings say the corpse's head fell off during the trial. We found no source for that, so it isn't in the video.</p>
+<section class="more" data-slug="cadaver-synod" data-yt="9V6if5nPDO4" hidden><h2>More episodes</h2><div class="grid"></div></section>
+<script>(async () => { const m = document.currentScript.previousElementSibling;
+try { const v = await (await fetch('/videos.json', { cache: 'no-cache' })).json();
+const e = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const list = v.filter((x) => x.id !== m.dataset.yt && x.slug !== m.dataset.slug).slice(0, 3);
+if (!list.length) return;
+m.querySelector('.grid').innerHTML = list.map((x) => '<a href="https://www.youtube.com/watch?v=' + e(x.id) + '"><img src="https://i.ytimg.com/vi/' + e(x.id) + '/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"><span>' + e(x.title) + '</span></a>').join('');
+m.hidden = false; } catch (err) {} })();</script>
 </main>
 <footer class="wrap">Spotted an error? Tell us in the video's comments, or email <a href="mailto:contact@chronigans.com">contact@chronigans.com</a>. We pin corrections.<br>&copy; 2026 The Chronigans</footer>
 </body>
