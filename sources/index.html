@@ -48,10 +48,18 @@ li { display: grid; grid-template-columns: 4.2em 1fr; gap: 4px 12px; padding: 12
 li .t { font: 800 .95rem/1.6 var(--f-body); color: var(--accent); font-variant-numeric: tabular-nums; }
 li .t.none { color: var(--muted); }
 li a { font-weight: 700; text-decoration-color: color-mix(in srgb, var(--accent) 60%, transparent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+li.nt { grid-template-columns: 1fr; }
 li a:hover { color: var(--accent-2); }
 li small { display: block; color: var(--muted); font-size: .85rem; }
 li p { margin: 0; }
 .note { margin-top: 28px; padding: 14px 16px; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 10px; color: var(--muted); }
+.more { margin-top: 44px; }
+.more .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.more a { text-decoration: none; display: block; }
+.more img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; border: 1px solid var(--rule); display: block; }
+.more span { display: block; margin-top: 8px; font: 700 .95rem/1.35 var(--f-body); color: var(--paper); }
+.more a:hover span { color: var(--accent-2); }
+@media (max-width: 600px) { .more .grid { grid-template-columns: 1fr; } }
 footer { margin-top: 48px; padding-block: 24px 40px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
 footer a { color: var(--paper); }
 </style>
@@ -60,7 +68,7 @@ footer a { color: var(--paper); }
 <div class="bar"><div class="wrap"><a class="brand" href="/"><img src="/img/icon-192.png" alt=""><span>THE CHRONIGANS</span></a><a class="yt" href="https://www.youtube.com/@TheChronigans">YouTube</a></div></div>
 <main class="wrap">
 <header class="top"><p class="ep">Sources</p><h1>Every episode's sources</h1></header>
-<ul><li><span class="t none">#1</span><p><a href="/sources/cadaver-synod/">The Dumbest Trial a Pope Ever Did in History (897 AD)</a><small>The Cadaver Synod, Rome, 897</small></p></li><li><span class="t none">#3</span><p><a href="/sources/mummy-medicine/">The WEIRDEST Medicine Europe Ever Took</a><small>Mummy medicine and the mummies' afterlives in Europe, 1200s to 1964</small></p></li><li><span class="t none">#2</span><p><a href="/sources/pastry-war/">The PETTIEST Reason France Ever Invaded a Country</a><small>The Pastry War, Mexico, 1838-1839</small></p></li></ul>
+<ul><li><span class="t none">#1</span><p><a href="/sources/cadaver-synod/">The Dumbest Trial a Pope Ever Did in History (897 AD)</a><small>The Cadaver Synod, Rome, 897</small></p></li><li><span class="t none">#4</span><p><a href="/sources/king-midas/">Fact-Checking King Midas and His Golden TOUCH</a><small>King Midas: the myth, the real Phrygian king and his family's tomb at Gordion</small></p></li><li><span class="t none">#3</span><p><a href="/sources/mummy-medicine/">The WEIRDEST Medicine Europe Ever Took</a><small>Mummy medicine and the mummies' afterlives in Europe, 1200s to 1964</small></p></li><li><span class="t none">#2</span><p><a href="/sources/pastry-war/">The PETTIEST Reason France Ever Invaded a Country</a><small>The Pastry War, Mexico, 1838-1839</small></p></li></ul>
 </main>
 <footer class="wrap">Spotted an error? Tell us in the video's comments, or email <a href="mailto:contact@chronigans.com">contact@chronigans.com</a>. We pin corrections.<br>&copy; 2026 The Chronigans</footer>
 </body>
