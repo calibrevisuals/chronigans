@@ -6,13 +6,21 @@ import fs from 'node:fs';
 const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const videos = JSON.parse(fs.readFileSync('videos.json', 'utf8'));
 const byId = new Map(videos.map((v) => [v.id, v.title]));
+const bySlug = new Map(videos.filter((v) => v.slug).map((v) => [v.slug, v.id]));
 
 let changed = 0;
 for (const slug of fs.readdirSync('sources')) {
   const file = `sources/${slug}/index.html`;
   if (!fs.existsSync(file)) continue;
   let html = fs.readFileSync(file, 'utf8');
-  const id = (html.match(/data-yt="([^"]*)"/) || [])[1];
+  let id = (html.match(/data-yt="([^"]*)"/) || [])[1];
+  // A page with no id yet gets it from the video whose description links to this page.
+  if (!id && bySlug.has(slug)) {
+    id = bySlug.get(slug);
+    html = html.replace('data-yt=""', `data-yt="${esc(id)}"`);
+    fs.writeFileSync(file, html);
+    console.log(`${slug}: set YouTube id ${id}`);
+  }
   const live = id && byId.get(id);
   const old = (html.match(/<h1>([^<]*)<\/h1>/) || [])[1];
   if (!live || !old || old === esc(live)) continue;

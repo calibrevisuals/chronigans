@@ -1,7 +1,9 @@
 name: Update video list
 on:
   schedule:
-    - cron: '17 3 * * *'
+    - cron: '17 */3 * * *'
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: write
@@ -15,6 +17,7 @@ jobs:
           node-version: 20
       - run: node .github/scripts/videos.mjs
       - run: node .github/scripts/titles.mjs
+      - run: node .github/scripts/home.mjs
       - name: Commit if changed
         run: |
           git add videos.json sources index.html

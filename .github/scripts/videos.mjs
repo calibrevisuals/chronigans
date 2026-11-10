@@ -22,7 +22,11 @@ for (const e of xml.split('<entry>').slice(1)) {
     slug: (desc.match(/chronigans\.com\/sources\/([a-z0-9-]+)/) || [])[1] || null,
   });
 }
-out.sort((a, b) => b.published.localeCompare(a.published));
 if (!out.length) { console.log('feed empty, keeping the old file'); process.exit(0); }
-fs.writeFileSync('videos.json', JSON.stringify(out.slice(0, 10), null, 2) + '\n');
+// The feed only holds the newest 15 uploads, so keep every older video we already had (the home page lists them all).
+const old = fs.existsSync('videos.json') ? JSON.parse(fs.readFileSync('videos.json', 'utf8')) : [];
+const oldest = out.reduce((m, v) => (v.published < m ? v.published : m), out[0].published);
+for (const v of old) if (!out.some((x) => x.id === v.id) && v.published < oldest) out.push(v);
+out.sort((a, b) => b.published.localeCompare(a.published));
+fs.writeFileSync('videos.json', JSON.stringify(out, null, 2) + '\n');
 console.log(out.length, 'videos');
